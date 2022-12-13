@@ -9,3 +9,9 @@ export const Container = styled.div`
   align-items: flex-start;
   color: #010101
 `;
+
+export const Stat = styled.h2`
+  font-size: 22px;
+  //font-weight: bold;
+  font-weight: ${props => props.isData > 0 ? 'bold' : 'normal' };
+`;

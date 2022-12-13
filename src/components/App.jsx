@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
-import { Container } from './App.styled';
-import { Controls } from './Controls/Controls';
-
-
-// export const App = () => {
-//   return (
-//     <Container>
-//     <h1>Please Leave Feedback</h1>
-//     <Controls></Controls>
-//
-//     </Container>
-//   );
-// };
+import { Container, Stat } from './App.styled';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Statistics } from './Statistics/Statistics';
+import { Section } from './Section/Section';
+import { NoFeedbackNotification } from './Notification/Notification';
 
 export class App extends Component {
 
-  constructor() {//для початку без спрощених варіантів
+  constructor() {
     super();
     this.state = {
       good: 0,
@@ -42,34 +34,43 @@ export class App extends Component {
 
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
-  }
+  };
 
   countPositiveFeedbackPercentage = () => {
     if (this.state.good === 0 && this.state.neutral === 0 && this.state.bad === 0) {
       return 0;
     }
     return Math.round(this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100);
-  }
+  };
+
+  isFeedback = () => this.state.good > 0 || this.state.neutral > 0 || this.state.bad > 0;
 
   render() {
     return (
-      <Container>
-        <h1>Please Leave Feedback</h1>
-        <Controls
-          clickGoodVote={this.addGoodVote}
-          clickNeutralVote={this.addNeutralVote}
-          clickBadVote={this.addBadVote}
-        ></Controls>
-        <h2>Statistics</h2>
-        <p>Good: {this.state.good}</p>
-        <p>Neutral: {this.state.neutral}</p>
-        <p>Bad: {this.state.bad}</p>
-        <p>Total: {this.countTotalFeedback()}</p>
-        <p>Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
-      </Container>
+
+      <Section title='Please Leave Feedback'>
+        <FeedbackOptions
+          onClickGoodVote={this.addGoodVote}
+          onClickNeutralVote={this.addNeutralVote}
+          onClickBadVote={this.addBadVote}>
+        </FeedbackOptions>
+        <Stat isData={this.isFeedback()}>Statistics</Stat>
+
+        {(this.state.good > 0 || this.state.neutral > 0 || this.state.bad > 0) ? (
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}>
+          </Statistics>
+        ) : (
+          <NoFeedbackNotification message='There is no feedback'></NoFeedbackNotification>
+        )}
+
+      </Section>
     );
   }
-
 }
 
-// export class App;
+
