@@ -5,10 +5,9 @@ export const SectionStyle = styled.section`
   flex-wrap: wrap;
   flex-direction: column;
   padding: 60px;
-  //padding-left: 0;
-  //min-width: 200px;
   color: #010101
 `;
 
 export const Title = styled.h1`
-`
+  font-size: 30px;
+`;

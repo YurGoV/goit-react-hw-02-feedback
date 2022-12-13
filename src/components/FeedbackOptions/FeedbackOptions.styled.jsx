@@ -6,6 +6,4 @@ export const ButtonsStyle = styled.div`
   align-items: flex-start;
   max-width: 200px;
   margin: 10px 0;
-
-
 `;

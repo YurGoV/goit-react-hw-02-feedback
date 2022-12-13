@@ -49,6 +49,7 @@ export class App extends Component {
     return (
 
       <Section title='Please Leave Feedback'>
+
         <FeedbackOptions
           onClickGoodVote={this.addGoodVote}
           onClickNeutralVote={this.addNeutralVote}
@@ -56,7 +57,7 @@ export class App extends Component {
         </FeedbackOptions>
         <Stat isData={this.isFeedback()}>Statistics</Stat>
 
-        {(this.state.good > 0 || this.state.neutral > 0 || this.state.bad > 0) ? (
+        {this.isFeedback() ? (
           <Statistics
             good={this.state.good}
             neutral={this.state.neutral}
@@ -72,5 +73,4 @@ export class App extends Component {
     );
   }
 }
-
 
