@@ -5,12 +5,22 @@ import PropTypes from 'prop-types';
 
 
 export const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+
+  const totalFeedbacks = good + neutral + bad;
+
+  const positiveFeedbackPercentage = () => {
+    if (good === 0 && neutral === 0 && bad === 0) {
+      return 0;
+    }
+    return Math.round(good / (good + neutral + bad) * 100);
+  };
+
   return <div>
     <Statistic>Good: {good}</Statistic>
     <Statistic>Neutral: {neutral}</Statistic>
     <Statistic>Bad: {bad}</Statistic>
-    <Statistic>Total: {total}</Statistic>
-    <Positive data={positivePercentage}>Positive feedback: {positivePercentage}%</Positive>
+    <Statistic>Total: {totalFeedbacks}</Statistic>
+    <Positive data={positiveFeedbackPercentage()}>Positive feedback: {positiveFeedbackPercentage()}%</Positive>
   </div>;
 };
 
