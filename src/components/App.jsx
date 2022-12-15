@@ -33,6 +33,7 @@ export class App extends Component {
       <Section title='Please Leave Feedback'>
 
         <FeedbackOptions
+
           onVote={this.changeVoteState}>
         </FeedbackOptions>
 
