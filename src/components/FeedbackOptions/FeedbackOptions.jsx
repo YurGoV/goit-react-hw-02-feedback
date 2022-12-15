@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonsStyle } from './FeedbackOptions.styled';
 
-
 export const FeedbackOptions = ({ onVote }) => {
 
   const onVoteClick = event => {

@@ -27,6 +27,7 @@ export class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+
     return (
 
       <Section title='Please Leave Feedback'>
@@ -34,8 +35,8 @@ export class App extends Component {
         <FeedbackOptions
           onVote={this.changeVoteState}>
         </FeedbackOptions>
-        <Stat isData={this.isFeedback()}>Statistics</Stat>
 
+        <Stat isData={this.isFeedback()}>Statistics</Stat>
         {this.isFeedback() ? (
           <Statistics
             good={good}
