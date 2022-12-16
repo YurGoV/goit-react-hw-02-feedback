@@ -17,6 +17,7 @@ export class App extends Component {
   };
 
 
+
   changeVoteState = (data) => {
     this.setState(prevState => ({
       [data]: prevState[data] + 1,
@@ -24,6 +25,7 @@ export class App extends Component {
   };
 
   isFeedback = () => this.state.good > 0 || this.state.neutral > 0 || this.state.bad > 0;
+
 
   render() {
     const { good, neutral, bad } = this.state;
@@ -33,7 +35,7 @@ export class App extends Component {
       <Section title='Please Leave Feedback'>
 
         <FeedbackOptions
-
+          options={Object.keys(this.state)}
           onVote={this.changeVoteState}>
         </FeedbackOptions>
 

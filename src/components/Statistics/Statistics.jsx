@@ -3,6 +3,8 @@ import { Statistic } from './Statistic.styled';
 import { Positive } from './Statistic.styled';
 import PropTypes from 'prop-types';
 
+
+//todo: add options to display and calculate statistic !)
 export const Statistics = ({ good, neutral, bad }) => {
 
   const totalFeedbacks = good + neutral + bad;

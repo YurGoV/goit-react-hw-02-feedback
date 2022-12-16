@@ -1,19 +1,28 @@
 import React from 'react';
 import { Button, ButtonsStyle } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ onVote }) => {
+export const FeedbackOptions = ({ onVote, options }) => {
 
   const onVoteClick = vote => {
-    console.log(vote);
-    onVote(vote);
+    console.log(vote.option);
+    onVote(vote.option);
   };
+
+  console.log(options);
 
   //todo: зрозуміти коли які функції застосовувати (анонімні, стрілки і т.п.)
   return (
     <ButtonsStyle>
-      <Button type='button' vote='good' onClick={() => onVoteClick('good')}>Good</Button>
-      <Button type='button' vote='neutral' onClick={() => onVoteClick('neutral')}>Neutral</Button>
-      <Button type='button' vote='bad' onClick={() => onVoteClick('bad')}>Bad</Button>
+      {options.map(option => (
+          <Button type='button'
+                  key={options.indexOf(option)}
+                  vote={option}
+                  onClick={() => onVoteClick({ option })}
+          >{option}</Button>
+        ),
+      )
+
+      }
     </ButtonsStyle>
   );
 };

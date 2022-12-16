@@ -7,7 +7,8 @@ export const Statistic = styled.p`
 export const Positive = styled.p`
   font-size: 18px;
 
+
   ${props => props.data > 0 && 'color: green; text-decoration: underline;'};
-  font-style: ${props => props.data > 50 && 'italic'};
+  ${props => props.data > 50 && 'text-shadow: 1px 0px 1px lightgreen;'};
 `;
 
